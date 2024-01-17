@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrassAndPoem", "BrassAndPoem\BrassAndPoem.csproj", "{F59366CC-C4B1-4E29-81C5-884A79270D95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrassAndPoem.Tests", "BrassAndPoem.Tests\BrassAndPoem.Tests.csproj", "{7D90D2F3-A1BF-4455-B008-CBDD2BE6ECD6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F59366CC-C4B1-4E29-81C5-884A79270D95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F59366CC-C4B1-4E29-81C5-884A79270D95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F59366CC-C4B1-4E29-81C5-884A79270D95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F59366CC-C4B1-4E29-81C5-884A79270D95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D90D2F3-A1BF-4455-B008-CBDD2BE6ECD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D90D2F3-A1BF-4455-B008-CBDD2BE6ECD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D90D2F3-A1BF-4455-B008-CBDD2BE6ECD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D90D2F3-A1BF-4455-B008-CBDD2BE6ECD6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
