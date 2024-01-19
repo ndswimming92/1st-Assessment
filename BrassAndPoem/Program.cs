@@ -37,7 +37,7 @@ Console.WriteLine($@"===========================================================
     {
         DisplayMenu();
 
-        Console.WriteLine("\nEnter your choice (1-5): ");
+        Console.WriteLine("\nEnter your choice (1-5):\n");
         if (!int.TryParse(Console.ReadLine(), out userChoice))
         {
             Console.WriteLine("\nInvalid input. Please enter a number.");
@@ -50,19 +50,19 @@ Console.WriteLine($@"===========================================================
                 DisplayAllProducts(Products, productTypes);
                 break;
             case 2:
-                AddProduct(Products, productTypes);
-                break;
-            case 3:
-                UpdateProduct(Products, productTypes);
-                break;
-            case 4:
                 DeleteProduct(Products, productTypes);
                 break;
+            case 3:
+                AddProduct(Products, productTypes);
+                break;
+            case 4:
+                UpdateProduct(Products, productTypes);
+                break;
             case 5:
-                Console.WriteLine("Exiting. Thank you!");
+                Console.WriteLine("\nExiting. Thank you!");
                 break;
             default:
-                Console.WriteLine("Invalid choice. Please enter a number between 1 & 5.");
+                Console.WriteLine("\nInvalid choice. Please enter a number between 1 & 5.");
                 break;
         }
 
@@ -95,8 +95,34 @@ void DisplayAllProducts(List<Product> products, List<ProductType> productTypes)
 
 void DeleteProduct(List<Product> products, List<ProductType> productTypes)
 {
-    throw new NotImplementedException();
+    Console.WriteLine("\nProducts to Delete:\n");
+
+    for (int i = 0;i < products.Count;i++) 
+    { 
+        Product product= products[i];
+        ProductType productType = productTypes.FirstOrDefault(pt => pt.Id == product.ProductTypeId);
+
+        Console.WriteLine($"{i + 1}. Name: {product.Name}, Price: {product.Price:C}, Type: {productType?.Title}");
+    }
+
+    Console.WriteLine("\nEnter the number of the product to delete:\n");
+
+    if (int.TryParse(Console.ReadLine(), out int selectedIndex) && selectedIndex >= 1 && selectedIndex <= products.Count)
+    {
+
+        int indexToDelete = selectedIndex - 1;
+
+        Product productToDelete= products[indexToDelete];
+
+        products.RemoveAt(indexToDelete);
+        Console.WriteLine($"\nProduct '{productToDelete.Name}' deleted successfully!");
+    }
+    else
+    {
+        Console.WriteLine("\nInvalid number, no product was deleted.");
+    }
 }
+
 
 void AddProduct(List<Product> products, List<ProductType> productTypes)
 {
