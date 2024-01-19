@@ -29,12 +29,46 @@ Console.WriteLine($@"===========================================================
 =============================================================");
 
 
-Console.WriteLine("Please Select an Option Below: ");
-
-
 //implement your loop here
 
-void DisplayMenu()
+    int userChoice;
+
+    do
+    {
+        DisplayMenu();
+
+        Console.WriteLine("Enter your choice (1-5): ");
+        if (!int.TryParse(Console.ReadLine(), out userChoice))
+        {
+            Console.WriteLine("Invalid input. Please enter a number.");
+            continue;
+        }
+
+        switch (userChoice)
+        {
+            case 1:
+                DisplayAllProducts(Products, productTypes);
+                break;
+            case 2:
+                AddProduct(Products, productTypes);
+                break;
+            case 3:
+                UpdateProduct(Products, productTypes);
+                break;
+            case 4:
+                DeleteProduct(Products, productTypes);
+                break;
+            case 5:
+                Console.WriteLine("Exit the program. Thank you!");
+                break;
+            default:
+                Console.WriteLine("Invalid choice. Please enter a number between 1 & 5.");
+                break;
+        }
+
+    } while (userChoice != 5);
+   
+    void DisplayMenu()
 {
     throw new NotImplementedException();
 }
