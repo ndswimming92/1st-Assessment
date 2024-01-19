@@ -37,7 +37,7 @@ Console.WriteLine($@"===========================================================
     {
         DisplayMenu();
 
-        Console.WriteLine("Enter your choice (1-5): ");
+        Console.WriteLine("\nEnter your choice (1-5): ");
         if (!int.TryParse(Console.ReadLine(), out userChoice))
         {
             Console.WriteLine("Invalid input. Please enter a number.");
@@ -59,7 +59,7 @@ Console.WriteLine($@"===========================================================
                 DeleteProduct(Products, productTypes);
                 break;
             case 5:
-                Console.WriteLine("Exit the program. Thank you!");
+                Console.WriteLine("Exiting. Thank you!");
                 break;
             default:
                 Console.WriteLine("Invalid choice. Please enter a number between 1 & 5.");
@@ -70,7 +70,12 @@ Console.WriteLine($@"===========================================================
    
     void DisplayMenu()
 {
-    throw new NotImplementedException();
+    Console.WriteLine("\nPlease select an option below:\n");
+    Console.WriteLine("1. Display all products");
+    Console.WriteLine("2. Delete a product");
+    Console.WriteLine("3. Add a new product");
+    Console.WriteLine("4. Update a products properties");
+    Console.WriteLine("5. Exit");
 }
 
 void DisplayAllProducts(List<Product> products, List<ProductType> productTypes)
