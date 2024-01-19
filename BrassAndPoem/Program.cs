@@ -37,10 +37,10 @@ Console.WriteLine($@"===========================================================
     {
         DisplayMenu();
 
-        Console.WriteLine("\nEnter your choice (1-5):\n");
+        Console.Write("\nEnter your choice (1-5): ");
         if (!int.TryParse(Console.ReadLine(), out userChoice))
         {
-            Console.WriteLine("\nInvalid input. Please enter a number.");
+            Console.Write("\nInvalid input. Please enter a number.");
             continue;
         }
 
@@ -105,7 +105,7 @@ void DeleteProduct(List<Product> products, List<ProductType> productTypes)
         Console.WriteLine($"{i + 1}. Name: {product.Name}, Price: {product.Price:C}, Type: {productType?.Title}");
     }
 
-    Console.WriteLine("\nEnter the number of the product to delete:\n");
+    Console.Write("\nEnter the number of the product to delete: ");
 
     if (int.TryParse(Console.ReadLine(), out int selectedIndex) && selectedIndex >= 1 && selectedIndex <= products.Count)
     {
@@ -126,7 +126,44 @@ void DeleteProduct(List<Product> products, List<ProductType> productTypes)
 
 void AddProduct(List<Product> products, List<ProductType> productTypes)
 {
-    throw new NotImplementedException();
+    Console.WriteLine("\nEnter the new product details:\n");
+    Console.Write("Name: ");
+    string productName = Console.ReadLine();
+
+    Console.Write("Price: ");
+    if (decimal.TryParse(Console.ReadLine(), out decimal productPrice))
+    {
+        Console.WriteLine("\nProduct Types:\n");
+        foreach (var productType in productTypes)
+        {
+            Console.WriteLine($"{productType.Id}. {productType.Title}");
+        }
+
+
+    Console.Write("\nChoose a product type (Enter the corresponding number): ");
+            if (int.TryParse(Console.ReadLine(), out int selectedProductTypeId) && productTypes.Any(pt => pt.Id == selectedProductTypeId))
+            {
+
+                Product newProduct = new Product
+                {
+                    Name = productName,
+                    Price = productPrice,
+                    ProductTypeId = selectedProductTypeId
+                };
+
+                products.Add(newProduct);
+
+                Console.WriteLine($"\nProduct '{productName}' added successfuly.");
+            }
+            else
+            {
+                Console.WriteLine("Inavalid product type. No product added.");
+            }
+    }
+        else
+        {
+            Console.WriteLine("Invalid price. No product added.");
+        }
 }
 
 void UpdateProduct(List<Product> products, List<ProductType> productTypes)
