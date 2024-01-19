@@ -40,7 +40,7 @@ Console.WriteLine($@"===========================================================
         Console.WriteLine("\nEnter your choice (1-5): ");
         if (!int.TryParse(Console.ReadLine(), out userChoice))
         {
-            Console.WriteLine("Invalid input. Please enter a number.");
+            Console.WriteLine("\nInvalid input. Please enter a number.");
             continue;
         }
 
@@ -80,7 +80,17 @@ Console.WriteLine($@"===========================================================
 
 void DisplayAllProducts(List<Product> products, List<ProductType> productTypes)
 {
-    throw new NotImplementedException();
+    Console.WriteLine("\nAll Products:\n");
+
+    for (int i = 0; i < products.Count; i++)
+    {
+        Product product = products[i];
+        ProductType productType = productTypes.FirstOrDefault(pt => pt.Id == product.ProductTypeId);
+
+        Console.WriteLine($"{i + 1}. Name: {product.Name}, Price: {product.Price:C}, Type: {productType?.Title}");
+    }
+
+    Console.WriteLine();
 }
 
 void DeleteProduct(List<Product> products, List<ProductType> productTypes)
