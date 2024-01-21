@@ -168,7 +168,60 @@ void AddProduct(List<Product> products, List<ProductType> productTypes)
 
 void UpdateProduct(List<Product> products, List<ProductType> productTypes)
 {
-    throw new NotImplementedException();
+    Console.WriteLine("\nProducts to update:\n");
+
+    for (int i = 0; i< products.Count; i++)
+    {
+        Product product = products[i];
+        ProductType productType = productTypes.FirstOrDefault(pt => pt.Id == product.ProductTypeId);
+
+        Console.WriteLine($"{i + 1}. Name: {product.Name}, Price: {product.Price:C}, Type: {productType?.Title}");
+    }
+
+    Console.Write("\nEnter the number of the product to be updated: ");
+
+    if (int.TryParse(Console.ReadLine(), out int selectedIndex) && selectedIndex >= 1 && selectedIndex <= products.Count)
+    {
+ 
+        int indexToUpdate = selectedIndex - 1;
+
+        Product productToUpdate = products[indexToUpdate];
+
+        Console.WriteLine("\nEnter the updated details for the product (press Enter to leave unchanged):\n");
+
+        Console.Write($"New Name ({productToUpdate.Name}): ");
+        string newProductName = Console.ReadLine();
+        if (!string.IsNullOrWhiteSpace(newProductName))
+        {
+            productToUpdate.Name = newProductName;
+        }
+
+        Console.Write($"\nNew Price ({productToUpdate.Price:C}): ");
+        string newPriceInput = Console.ReadLine();
+        if (!string.IsNullOrWhiteSpace(newPriceInput) && decimal.TryParse(newPriceInput, out decimal newProductPrice))
+        {
+            productToUpdate.Price = newProductPrice;
+        }
+
+        
+        Console.WriteLine($"\nNew Product Type ({productToUpdate.ProductTypeId} for unchanged): ");
+        foreach (var productType in productTypes)
+        {
+            Console.Write($"{productType.Id}. {productType.Title}  ");
+        }
+        Console.WriteLine();
+        string newProductTypeInput = Console.ReadLine();
+        if (!string.IsNullOrWhiteSpace(newProductTypeInput) && int.TryParse(newProductTypeInput, out int newProductTypeId) && productTypes.Any(pt => pt.Id == newProductTypeId))
+        {
+            productToUpdate.ProductTypeId = newProductTypeId;
+        }
+
+        Console.WriteLine($"\nProduct '{productToUpdate.Name}' updated successfully.");
+    }
+    else
+    {
+        Console.WriteLine("Invalid number chosen, no product updated.");
+    }
 }
 
 // don't move or change this!
